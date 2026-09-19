@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes Application</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__title">
+      <h1>Notes</h1>
+      <p id="note-count" class="topbar__count">0 notes</p>
+    </div>
+    <input
+      type="search"
+      id="search"
+      class="topbar__search"
+      placeholder="Search your notes"
+      aria-label="Search notes"
+    >
+  </header>
+
+  <main class="layout">
+
+    <section class="composer" aria-labelledby="composer-heading">
+      <form id="note-form" novalidate>
+        <h2 id="composer-heading">New note</h2>
+
+        <label class="field">
+          <span class="field__label">Title</span>
+          <input type="text" id="note-title" maxlength="80" placeholder="Give it a short title">
+        </label>
+
+        <label class="field">
+          <span class="field__label">Note</span>
+          <textarea id="note-body" rows="6" placeholder="Write something down"></textarea>
+        </label>
+
+        <fieldset class="colors">
+          <legend class="field__label">Colour</legend>
+          <label class="swatch swatch--mint">
+            <input type="radio" name="color" value="mint" checked>
+            <span class="swatch__dot"></span>
+            <span class="visually-hidden">Mint</span>
+          </label>
+          <label class="swatch swatch--sky">
+            <input type="radio" name="color" value="sky">
+            <span class="swatch__dot"></span>
+            <span class="visually-hidden">Sky</span>
+          </label>
+          <label class="swatch swatch--lilac">
+            <input type="radio" name="color" value="lilac">
+            <span class="swatch__dot"></span>
+            <span class="visually-hidden">Lilac</span>
+          </label>
+          <label class="swatch swatch--peach">
+            <input type="radio" name="color" value="peach">
+            <span class="swatch__dot"></span>
+            <span class="visually-hidden">Peach</span>
+          </label>
+          <label class="swatch swatch--butter">
+            <input type="radio" name="color" value="butter">
+            <span class="swatch__dot"></span>
+            <span class="visually-hidden">Butter</span>
+          </label>
+        </fieldset>
+
+        <p id="form-error" class="form-error" role="alert" hidden></p>
+
+        <div class="actions">
+          <button type="submit" id="save-btn" class="btn btn--primary">Add note</button>
+          <button type="button" id="cancel-btn" class="btn btn--ghost" hidden>Cancel edit</button>
+        </div>
+        <p class="hint">Tip: press Ctrl + Enter to save quickly.</p>
+      </form>
+    </section>
+
+    <section class="board" aria-label="Your notes">
+      <div id="notes-list" class="notes"></div>
+      <p id="empty-state" class="empty" hidden></p>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
