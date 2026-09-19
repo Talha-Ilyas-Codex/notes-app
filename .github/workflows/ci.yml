@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check that required files exist
+        run: |
+          for file in index.html style.css script.js; do
+            if [ ! -f "$file" ]; then
+              echo "Missing file: $file"
+              exit 1
+            fi
+          done
+          echo "All required files found"
+
+      - name: Check that HTML links to CSS and JavaScript
+        run: |
+          grep -q 'style.css' index.html
+          grep -q 'script.js' index.html
+          echo "HTML links are correct"
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check script.js
+          echo "JavaScript syntax is valid"
