@@ -353,3 +353,26 @@ button:focus-visible,
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(29, 39, 64, 0.12);
 }
+/* Profile photo in the header */
+.topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.topbar__avatar {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--surface);
+  box-shadow: 0 2px 10px rgba(29, 39, 64, 0.18);
+}
+
+@media (max-width: 800px) {
+  .topbar__avatar {
+    width: 64px;
+    height: 64px;
+  }
+}
