@@ -345,3 +345,11 @@ button:focus-visible,
     animation: none !important;
   }
 }
+/* Hover effect for note cards */
+.note {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.note:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(29, 39, 64, 0.12);
+}
